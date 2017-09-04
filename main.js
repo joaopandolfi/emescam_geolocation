@@ -7,5 +7,5 @@ function receiveLocation(data){
 
 var address = "Coronel Alziro n368 Centro Vitória ES,29015115";
 
-maps.consumeAPI(address, receiveLocation, debug=false);
+maps.consumeAPI(address, receiveLocation, false);
 

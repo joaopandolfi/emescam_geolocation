@@ -6,7 +6,7 @@
 
 var https = require("https");
 
-function consumeAPI(address,callback,debug=true){
+function consumeAPI(address,callback,debug){
 
 	var baseUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address={address}&key={api_key}'
 	//var address = "Osvaldo Barbosa silva,nº39, São pedro,Vitória ES"
