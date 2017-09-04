@@ -13,11 +13,11 @@ Desenvolvido para o laboratório de pesquisas genéticas da EMESCAM.
 2. Api: Google Maps API
 
 ## Utilização
-´´´
+```
  Navegue pelo terminal até a pasta raiz do projeto.
  Execute:
  node main.js
-´´´
+```
 
 ## Programador
 João Carlos Pandolfi Santana
