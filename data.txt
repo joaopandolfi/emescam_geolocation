@@ -1,0 +1,5 @@
+Api key:  AIzaSyABVZRiogXuIJUxQl2l4s_cXrZ2sTSlUAI 
+
+Documentation: https://developers.google.com/maps/documentation/geocoding/start?hl=pt-br
+
+Example: https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=YOUR_API_KEY
