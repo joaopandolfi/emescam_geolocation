@@ -12,7 +12,7 @@ function consumeAPI(address,callback,debug=true){
 	//var address = "Osvaldo Barbosa silva,nº39, São pedro,Vitória ES"
 	var apiKey = "AIzaSyABVZRiogXuIJUxQl2l4s_cXrZ2sTSlUAI";
 	var data = "";
-	var result = {location:{},data:{}}
+	var result = {location:{lat:0,lng:0},data:{},status:0}
 
 	baseUrl = baseUrl.replace("{address}",address);
 	baseUrl = baseUrl.replace("{api_key}", apiKey);
@@ -30,16 +30,22 @@ function consumeAPI(address,callback,debug=true){
   		});
 
 	  	res.on('end', function(e){
+
+	  		if(debug)
+	  			console.log('RESULT: ' + data);
+
 			a = JSON.parse(data);
-			result.data = a;
-			result.location = a.results[0].geometry.location;
+			if(a.status != "ZERO_RESULTS"){
+				result.data = a;
+				result.location = a.results[0].geometry.location;
+				result.status = 1;
+			}
 
 			if(debug){
-				console.log('RESULT: ' + data);
 				console.log("== LOCATION ==")
 				console.log("Lat: "+ result.location.lat);
 				console.log("Lng: "+ result.location.lng);
-				console.log("=============")
+				console.log("=============\n")
 			}
 
 			callback(result);

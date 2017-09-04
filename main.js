@@ -5,5 +5,7 @@ function receiveLocation(data){
 	console.log(data.location.lng);
 }
 
-maps.consumeAPI("Osvaldo Barbosa silva,nº39, São pedro,Vitória ES", receiveLocation, debug=false);
+var address = "Coronel Alziro n368 Centro Vitória ES,29015115";
+
+maps.consumeAPI(address, receiveLocation, debug=false);
 
