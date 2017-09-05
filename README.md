@@ -19,5 +19,8 @@ Desenvolvido para o laboratório de pesquisas genéticas da EMESCAM.
  node main.js
 ```
 
+## Visualização
+http://31.220.54.251:8080/genetic/emescam_geolocation/visualization/
+
 ## Programador
 João Carlos Pandolfi Santana
