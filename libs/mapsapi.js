@@ -9,8 +9,7 @@ var https = require("https");
 function consumeAPI(address,callback,debug){
 
 	var baseUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address={address}&key={api_key}'
-	//var address = "Osvaldo Barbosa silva,nº39, São pedro,Vitória ES"
-	var apiKey = "AIzaSyABVZRiogXuIJUxQl2l4s_cXrZ2sTSlUAI";
+ 	var apiKey = "AIzaSyABVZRiogXuIJUxQl2l4s_cXrZ2sTSlUAI";
 	var data = "";
 	var result = {location:{lat:0,lng:0},data:{},status:0}
 
