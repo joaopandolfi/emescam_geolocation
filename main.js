@@ -1,11 +1,9 @@
-var maps = require("./libs/mapsapi.js");
+/*
+* Main program
+* Get Adrress from CSV and consult
+*/
 
-function receiveLocation(data){
-	console.log(data.location.lat);
-	console.log(data.location.lng);
-}
+var app = require("./libs/app.js")
+app.consult("./data/CONTROLES 01-9-2017.csv","./data/coord_controle.csv",7,4);
 
-var address = "Coronel Alziro n368 Centro Vitória ES,29015115";
-
-maps.consumeAPI(address, receiveLocation, false);
 

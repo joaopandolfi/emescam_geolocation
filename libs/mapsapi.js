@@ -4,14 +4,15 @@
 * joaopandolfi@gmail.com
 */
 
-var https = require("https");
+var apikeys = ["AIzaSyD11OmP2dDvg67_5I_Dw4Jjv8KL4zQz9zc","AIzaSyABVZRiogXuIJUxQl2l4s_cXrZ2sTSlUAI"];
 
 function consumeAPI(address,callback,debug){
+	var https = require("https");
 
 	var baseUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address={address}&key={api_key}'
- 	var apiKey = "AIzaSyABVZRiogXuIJUxQl2l4s_cXrZ2sTSlUAI";
+ 	var apiKey = apikeys[0];
 	var data = "";
-	var result = {location:{lat:0,lng:0},data:{},status:0}
+	var result = {location:{lat:0,lng:0},data:{},status:0, address: address}
 
 	baseUrl = baseUrl.replace("{address}",address);
 	baseUrl = baseUrl.replace("{api_key}", apiKey);
@@ -34,7 +35,12 @@ function consumeAPI(address,callback,debug){
 	  			console.log('RESULT: ' + data);
 
 			a = JSON.parse(data);
-			if(a.status != "ZERO_RESULTS"){
+			if(a.status == "OVER_QUERY_LIMIT"){
+				console.log("QUERY LIMIT PER DAY");
+				return;
+			}
+
+			if(a.status != "ZERO_RESULTS" && a.status != "UNKNOWN_ERROR" && a.status != "INVALID_REQUEST"){
 				result.data = a;
 				result.location = a.results[0].geometry.location;
 				result.status = 1;

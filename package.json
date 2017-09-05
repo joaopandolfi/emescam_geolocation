@@ -1,0 +1,23 @@
+{
+  "name": "emescam_geolocation",
+  "version": "1.0.0",
+  "description": "Emescam geolocation diseases",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joaopandolfi/emescam_geolocation.git"
+  },
+  "keywords": [],
+  "author": "João Carlos Pandolfi Santana",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joaopandolfi/emescam_geolocation/issues"
+  },
+  "homepage": "https://github.com/joaopandolfi/emescam_geolocation#readme",
+  "dependencies": {
+    "fast-csv": "^2.4.0"
+  }
+}
