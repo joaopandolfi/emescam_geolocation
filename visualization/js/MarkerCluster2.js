@@ -4,7 +4,7 @@
 // ==/ClosureCompiler==
 
 /**
- * @name MarkerClusterer for Google Maps v3
+ * @name MarkerClusterer2 for Google Maps v3
  * @version version 1.0
  * @author Luke Mahe
  * @fileoverview
@@ -12,8 +12,8 @@
  * markers.
  * <br/>
  * This is a v3 implementation of the
- * <a href="http://gmaps-utility-library-dev.googlecode.com/svn/tags/markerclusterer/"
- * >v2 MarkerClusterer</a>.
+ * <a href="http://gmaps-utility-library-dev.googlecode.com/svn/tags/markerclusterer2/"
+ * >v2 MarkerClusterer2</a>.
  */
 
 /**
@@ -63,13 +63,13 @@
  * @constructor
  * @extends google.maps.OverlayView
  */
-function MarkerClusterer(map, opt_markers, opt_options) {
-	// MarkerClusterer implements google.maps.OverlayView interface. We use the
-	// extend function to extend MarkerClusterer with google.maps.OverlayView
+function MarkerClusterer2(map, opt_markers, opt_options) {
+	// MarkerClusterer2 implements google.maps.OverlayView interface. We use the
+	// extend function to extend MarkerClusterer2 with google.maps.OverlayView
 	// because it might not always be available when the code is defined so we
 	// look for it at the last possible moment. If it doesn't exist now then
 	// there is no point going ahead :)
-	this.extend(MarkerClusterer, google.maps.OverlayView);
+	this.extend(MarkerClusterer2, google.maps.OverlayView);
 	this.map_ = map;
 
 	/**
@@ -190,7 +190,7 @@ function MarkerClusterer(map, opt_markers, opt_options) {
  * @type {string}
  * @private
  */
-MarkerClusterer.prototype.MARKER_CLUSTER_IMAGE_PATH_ = 'imgs/m';
+MarkerClusterer2.prototype.MARKER_CLUSTER_IMAGE_PATH_ = 'imgs/p';
 
 
 /**
@@ -199,7 +199,7 @@ MarkerClusterer.prototype.MARKER_CLUSTER_IMAGE_PATH_ = 'imgs/m';
  * @type {string}
  * @private
  */
-MarkerClusterer.prototype.MARKER_CLUSTER_IMAGE_EXTENSION_ = 'png';
+MarkerClusterer2.prototype.MARKER_CLUSTER_IMAGE_EXTENSION_ = 'png';
 
 
 /**
@@ -210,7 +210,7 @@ MarkerClusterer.prototype.MARKER_CLUSTER_IMAGE_EXTENSION_ = 'png';
  * @return {Object} The new extended object.
  * @ignore
  */
-MarkerClusterer.prototype.extend = function(obj1, obj2) {
+MarkerClusterer2.prototype.extend = function(obj1, obj2) {
 	return (function(object) {
 		for (var property in object.prototype) {
 			this.prototype[property] = object.prototype[property];
@@ -224,7 +224,7 @@ MarkerClusterer.prototype.extend = function(obj1, obj2) {
  * Implementaion of the interface method.
  * @ignore
  */
-MarkerClusterer.prototype.onAdd = function() {
+MarkerClusterer2.prototype.onAdd = function() {
 	this.setReady_(true);
 };
 
@@ -232,14 +232,14 @@ MarkerClusterer.prototype.onAdd = function() {
  * Implementaion of the interface method.
  * @ignore
  */
-MarkerClusterer.prototype.draw = function() {};
+MarkerClusterer2.prototype.draw = function() {};
 
 /**
  * Sets up the styles object.
  *
  * @private
  */
-MarkerClusterer.prototype.setupStyles_ = function() {
+MarkerClusterer2.prototype.setupStyles_ = function() {
 	if (this.styles_.length) {
 		return;
 	}
@@ -256,7 +256,7 @@ MarkerClusterer.prototype.setupStyles_ = function() {
 /**
  *  Fit the map to the bounds of the markers in the clusterer.
  */
-MarkerClusterer.prototype.fitMapToMarkers = function() {
+MarkerClusterer2.prototype.fitMapToMarkers = function() {
 	var markers = this.getMarkers();
 	var bounds = new google.maps.LatLngBounds();
 	for (var i = 0, marker; marker = markers[i]; i++) {
@@ -272,7 +272,7 @@ MarkerClusterer.prototype.fitMapToMarkers = function() {
  *
  *  @param {Object} styles The style to set.
  */
-MarkerClusterer.prototype.setStyles = function(styles) {
+MarkerClusterer2.prototype.setStyles = function(styles) {
 	this.styles_ = styles;
 };
 
@@ -282,7 +282,7 @@ MarkerClusterer.prototype.setStyles = function(styles) {
  *
  *  @return {Object} The styles object.
  */
-MarkerClusterer.prototype.getStyles = function() {
+MarkerClusterer2.prototype.getStyles = function() {
 	return this.styles_;
 };
 
@@ -292,7 +292,7 @@ MarkerClusterer.prototype.getStyles = function() {
  *
  * @return {boolean} True if zoomOnClick_ is set.
  */
-MarkerClusterer.prototype.isZoomOnClick = function() {
+MarkerClusterer2.prototype.isZoomOnClick = function() {
 	return this.zoomOnClick_;
 };
 
@@ -301,7 +301,7 @@ MarkerClusterer.prototype.isZoomOnClick = function() {
  *
  * @return {boolean} True if averageCenter_ is set.
  */
-MarkerClusterer.prototype.isAverageCenter = function() {
+MarkerClusterer2.prototype.isAverageCenter = function() {
 	return this.averageCenter_;
 };
 
@@ -311,7 +311,7 @@ MarkerClusterer.prototype.isAverageCenter = function() {
  *
  *  @return {Array.<google.maps.Marker>} The markers.
  */
-MarkerClusterer.prototype.getMarkers = function() {
+MarkerClusterer2.prototype.getMarkers = function() {
 	return this.markers_;
 };
 
@@ -321,7 +321,7 @@ MarkerClusterer.prototype.getMarkers = function() {
  *
  *  @return {Number} The number of markers.
  */
-MarkerClusterer.prototype.getTotalMarkers = function() {
+MarkerClusterer2.prototype.getTotalMarkers = function() {
 	return this.markers_.length;
 };
 
@@ -331,7 +331,7 @@ MarkerClusterer.prototype.getTotalMarkers = function() {
  *
  *  @param {number} maxZoom The max zoom level.
  */
-MarkerClusterer.prototype.setMaxZoom = function(maxZoom) {
+MarkerClusterer2.prototype.setMaxZoom = function(maxZoom) {
 	this.maxZoom_ = maxZoom;
 };
 
@@ -341,7 +341,7 @@ MarkerClusterer.prototype.setMaxZoom = function(maxZoom) {
  *
  *  @return {number} The max zoom level.
  */
-MarkerClusterer.prototype.getMaxZoom = function() {
+MarkerClusterer2.prototype.getMaxZoom = function() {
 	return this.maxZoom_;
 };
 
@@ -354,7 +354,7 @@ MarkerClusterer.prototype.getMaxZoom = function() {
  *  @return {Object} A object properties: 'text' (string) and 'index' (number).
  *  @private
  */
-MarkerClusterer.prototype.calculator_ = function(markers, numStyles) {
+MarkerClusterer2.prototype.calculator_ = function(markers, numStyles) {
 	var index = 0;
 	var count = markers.length;
 	var dv = count;
@@ -379,7 +379,7 @@ MarkerClusterer.prototype.calculator_ = function(markers, numStyles) {
  *     'text' (string) and 'index' (number).
  *
  */
-MarkerClusterer.prototype.setCalculator = function(calculator) {
+MarkerClusterer2.prototype.setCalculator = function(calculator) {
 	this.calculator_ = calculator;
 };
 
@@ -389,7 +389,7 @@ MarkerClusterer.prototype.setCalculator = function(calculator) {
  *
  * @return {function(Array, number)} the calculator function.
  */
-MarkerClusterer.prototype.getCalculator = function() {
+MarkerClusterer2.prototype.getCalculator = function() {
 	return this.calculator_;
 };
 
@@ -400,7 +400,7 @@ MarkerClusterer.prototype.getCalculator = function() {
  * @param {Array.<google.maps.Marker>} markers The markers to add.
  * @param {boolean=} opt_nodraw Whether to redraw the clusters.
  */
-MarkerClusterer.prototype.addMarkers = function(markers, opt_nodraw) {
+MarkerClusterer2.prototype.addMarkers = function(markers, opt_nodraw) {
 	for (var i = 0, marker; marker = markers[i]; i++) {
 		this.pushMarkerTo_(marker);
 	}
@@ -416,7 +416,7 @@ MarkerClusterer.prototype.addMarkers = function(markers, opt_nodraw) {
  * @param {google.maps.Marker} marker The marker to add.
  * @private
  */
-MarkerClusterer.prototype.pushMarkerTo_ = function(marker) {
+MarkerClusterer2.prototype.pushMarkerTo_ = function(marker) {
 	marker.isAdded = false;
 	if (marker['draggable']) {
 		// If the marker is draggable add a listener so we update the clusters on
@@ -437,7 +437,7 @@ MarkerClusterer.prototype.pushMarkerTo_ = function(marker) {
  * @param {google.maps.Marker} marker The marker to add.
  * @param {boolean=} opt_nodraw Whether to redraw the clusters.
  */
-MarkerClusterer.prototype.addMarker = function(marker, opt_nodraw) {
+MarkerClusterer2.prototype.addMarker = function(marker, opt_nodraw) {
 	this.pushMarkerTo_(marker);
 	if (!opt_nodraw) {
 		this.redraw();
@@ -452,7 +452,7 @@ MarkerClusterer.prototype.addMarker = function(marker, opt_nodraw) {
  * @return {boolean} Whether the marker was removed or not
  * @private
  */
-MarkerClusterer.prototype.removeMarker_ = function(marker) {
+MarkerClusterer2.prototype.removeMarker_ = function(marker) {
 	var index = -1;
 	if (this.markers_.indexOf) {
 		index = this.markers_.indexOf(marker);
@@ -485,7 +485,7 @@ MarkerClusterer.prototype.removeMarker_ = function(marker) {
  * @param {boolean=} opt_nodraw Optional boolean to force no redraw.
  * @return {boolean} True if the marker was removed.
  */
-MarkerClusterer.prototype.removeMarker = function(marker, opt_nodraw) {
+MarkerClusterer2.prototype.removeMarker = function(marker, opt_nodraw) {
 	var removed = this.removeMarker_(marker);
 
 	if (!opt_nodraw && removed) {
@@ -504,7 +504,7 @@ MarkerClusterer.prototype.removeMarker = function(marker, opt_nodraw) {
  * @param {Array.<google.maps.Marker>} markers The markers to remove.
  * @param {boolean=} opt_nodraw Optional boolean to force no redraw.
  */
-MarkerClusterer.prototype.removeMarkers = function(markers, opt_nodraw) {
+MarkerClusterer2.prototype.removeMarkers = function(markers, opt_nodraw) {
 	var removed = false;
 
 	for (var i = 0, marker; marker = markers[i]; i++) {
@@ -526,7 +526,7 @@ MarkerClusterer.prototype.removeMarkers = function(markers, opt_nodraw) {
  * @param {boolean} ready The state.
  * @private
  */
-MarkerClusterer.prototype.setReady_ = function(ready) {
+MarkerClusterer2.prototype.setReady_ = function(ready) {
 	if (!this.ready_) {
 		this.ready_ = ready;
 		this.createClusters_();
@@ -539,7 +539,7 @@ MarkerClusterer.prototype.setReady_ = function(ready) {
  *
  * @return {number} The number of clusters.
  */
-MarkerClusterer.prototype.getTotalClusters = function() {
+MarkerClusterer2.prototype.getTotalClusters = function() {
 	return this.clusters_.length;
 };
 
@@ -549,7 +549,7 @@ MarkerClusterer.prototype.getTotalClusters = function() {
  *
  * @return {google.maps.Map} The map.
  */
-MarkerClusterer.prototype.getMap = function() {
+MarkerClusterer2.prototype.getMap = function() {
 	return this.map_;
 };
 
@@ -559,7 +559,7 @@ MarkerClusterer.prototype.getMap = function() {
  *
  * @param {google.maps.Map} map The map.
  */
-MarkerClusterer.prototype.setMap = function(map) {
+MarkerClusterer2.prototype.setMap = function(map) {
 	this.map_ = map;
 };
 
@@ -569,7 +569,7 @@ MarkerClusterer.prototype.setMap = function(map) {
  *
  * @return {number} The grid size.
  */
-MarkerClusterer.prototype.getGridSize = function() {
+MarkerClusterer2.prototype.getGridSize = function() {
 	return this.gridSize_;
 };
 
@@ -579,7 +579,7 @@ MarkerClusterer.prototype.getGridSize = function() {
  *
  * @param {number} size The grid size.
  */
-MarkerClusterer.prototype.setGridSize = function(size) {
+MarkerClusterer2.prototype.setGridSize = function(size) {
 	this.gridSize_ = size;
 };
 
@@ -589,7 +589,7 @@ MarkerClusterer.prototype.setGridSize = function(size) {
  *
  * @return {number} The grid size.
  */
-MarkerClusterer.prototype.getMinClusterSize = function() {
+MarkerClusterer2.prototype.getMinClusterSize = function() {
 	return this.minClusterSize_;
 };
 
@@ -598,7 +598,7 @@ MarkerClusterer.prototype.getMinClusterSize = function() {
  *
  * @param {number} size The grid size.
  */
-MarkerClusterer.prototype.setMinClusterSize = function(size) {
+MarkerClusterer2.prototype.setMinClusterSize = function(size) {
 	this.minClusterSize_ = size;
 };
 
@@ -609,7 +609,7 @@ MarkerClusterer.prototype.setMinClusterSize = function(size) {
  * @param {google.maps.LatLngBounds} bounds The bounds to extend.
  * @return {google.maps.LatLngBounds} The extended bounds.
  */
-MarkerClusterer.prototype.getExtendedBounds = function(bounds) {
+MarkerClusterer2.prototype.getExtendedBounds = function(bounds) {
 	var projection = this.getProjection();
 
 	// Turn the bounds into latlng.
@@ -647,7 +647,7 @@ MarkerClusterer.prototype.getExtendedBounds = function(bounds) {
  * @return {boolean} True if the marker is in the bounds.
  * @private
  */
-MarkerClusterer.prototype.isMarkerInBounds_ = function(marker, bounds) {
+MarkerClusterer2.prototype.isMarkerInBounds_ = function(marker, bounds) {
 	return bounds.contains(marker.getPosition());
 };
 
@@ -655,7 +655,7 @@ MarkerClusterer.prototype.isMarkerInBounds_ = function(marker, bounds) {
 /**
  * Clears all clusters and markers from the clusterer.
  */
-MarkerClusterer.prototype.clearMarkers = function() {
+MarkerClusterer2.prototype.clearMarkers = function() {
 	this.resetViewport(true);
 
 	// Set the markers a empty array.
@@ -667,7 +667,7 @@ MarkerClusterer.prototype.clearMarkers = function() {
  * Clears all existing clusters and recreates them.
  * @param {boolean} opt_hide To also hide the marker.
  */
-MarkerClusterer.prototype.resetViewport = function(opt_hide) {
+MarkerClusterer2.prototype.resetViewport = function(opt_hide) {
 	// Remove all the clusters
 	for (var i = 0, cluster; cluster = this.clusters_[i]; i++) {
 		cluster.remove();
@@ -687,7 +687,7 @@ MarkerClusterer.prototype.resetViewport = function(opt_hide) {
 /**
  *
  */
-MarkerClusterer.prototype.repaint = function() {
+MarkerClusterer2.prototype.repaint = function() {
 	var oldClusters = this.clusters_.slice();
 	this.clusters_.length = 0;
 	this.resetViewport();
@@ -706,7 +706,7 @@ MarkerClusterer.prototype.repaint = function() {
 /**
  * Redraws the clusters.
  */
-MarkerClusterer.prototype.redraw = function() {
+MarkerClusterer2.prototype.redraw = function() {
 	this.createClusters_();
 };
 
@@ -720,7 +720,7 @@ MarkerClusterer.prototype.redraw = function() {
  * @return {number} The distance between the two points in km.
  * @private
  */
-MarkerClusterer.prototype.distanceBetweenPoints_ = function(p1, p2) {
+MarkerClusterer2.prototype.distanceBetweenPoints_ = function(p1, p2) {
 	if (!p1 || !p2) {
 		return 0;
 	}
@@ -743,7 +743,7 @@ MarkerClusterer.prototype.distanceBetweenPoints_ = function(p1, p2) {
  * @param {google.maps.Marker} marker The marker to add.
  * @private
  */
-MarkerClusterer.prototype.addToClosestCluster_ = function(marker) {
+MarkerClusterer2.prototype.addToClosestCluster_ = function(marker) {
 	var distance = 40000; // Some large number
 	var clusterToAddTo = null;
 	var pos = marker.getPosition();
@@ -773,7 +773,7 @@ MarkerClusterer.prototype.addToClosestCluster_ = function(marker) {
  *
  * @private
  */
-MarkerClusterer.prototype.createClusters_ = function() {
+MarkerClusterer2.prototype.createClusters_ = function() {
 	if (!this.ready_) {
 		return;
 	}
@@ -795,22 +795,22 @@ MarkerClusterer.prototype.createClusters_ = function() {
 /**
  * A cluster that contains markers.
  *
- * @param {MarkerClusterer} markerClusterer The markerclusterer that this
+ * @param {MarkerClusterer2} markerClusterer2 The markerclusterer2 that this
  *     cluster is associated with.
  * @constructor
  * @ignore
  */
-function Cluster(markerClusterer) {
-	this.markerClusterer_ = markerClusterer;
-	this.map_ = markerClusterer.getMap();
-	this.gridSize_ = markerClusterer.getGridSize();
-	this.minClusterSize_ = markerClusterer.getMinClusterSize();
-	this.averageCenter_ = markerClusterer.isAverageCenter();
+function Cluster(markerClusterer2) {
+	this.markerClusterer2_ = markerClusterer2;
+	this.map_ = markerClusterer2.getMap();
+	this.gridSize_ = markerClusterer2.getGridSize();
+	this.minClusterSize_ = markerClusterer2.getMinClusterSize();
+	this.averageCenter_ = markerClusterer2.isAverageCenter();
 	this.center_ = null;
 	this.markers_ = [];
 	this.bounds_ = null;
-	this.clusterIcon_ = new ClusterIcon(this, markerClusterer.getStyles(),
-		markerClusterer.getGridSize());
+	this.clusterIcon_ = new ClusterIcon(this, markerClusterer2.getStyles(),
+		markerClusterer2.getGridSize());
 }
 
 /**
@@ -885,10 +885,10 @@ Cluster.prototype.addMarker = function(marker) {
 /**
  * Returns the marker clusterer that the cluster is associated with.
  *
- * @return {MarkerClusterer} The associated marker clusterer.
+ * @return {MarkerClusterer2} The associated marker clusterer.
  */
-Cluster.prototype.getMarkerClusterer = function() {
-	return this.markerClusterer_;
+Cluster.prototype.getMarkerClusterer2 = function() {
+	return this.markerClusterer2_;
 };
 
 
@@ -954,7 +954,7 @@ Cluster.prototype.getCenter = function() {
  */
 Cluster.prototype.calculateBounds_ = function() {
 	var bounds = new google.maps.LatLngBounds(this.center_, this.center_);
-	this.bounds_ = this.markerClusterer_.getExtendedBounds(bounds);
+	this.bounds_ = this.markerClusterer2_.getExtendedBounds(bounds);
 };
 
 
@@ -984,7 +984,7 @@ Cluster.prototype.getMap = function() {
  */
 Cluster.prototype.updateIcon = function() {
 	var zoom = this.map_.getZoom();
-	var mz = this.markerClusterer_.getMaxZoom();
+	var mz = this.markerClusterer2_.getMaxZoom();
 
 	if (mz && zoom > mz) {
 		// The zoom is greater than our max zoom so show all the markers in cluster.
@@ -1000,8 +1000,8 @@ Cluster.prototype.updateIcon = function() {
 		return;
 	}
 
-	var numStyles = this.markerClusterer_.getStyles().length;
-	var sums = this.markerClusterer_.getCalculator()(this.markers_, numStyles);
+	var numStyles = this.markerClusterer2_.getStyles().length;
+	var sums = this.markerClusterer2_.getCalculator()(this.markers_, numStyles);
 	this.clusterIcon_.setCenter(this.center_);
 	this.clusterIcon_.setSums(sums);
 	this.clusterIcon_.show();
@@ -1026,7 +1026,7 @@ Cluster.prototype.updateIcon = function() {
  * @ignore
  */
 function ClusterIcon(cluster, styles, opt_padding) {
-	cluster.getMarkerClusterer().extend(ClusterIcon, google.maps.OverlayView);
+	cluster.getMarkerClusterer2().extend(ClusterIcon, google.maps.OverlayView);
 
 	this.styles_ = styles;
 	this.padding_ = opt_padding || 0;
@@ -1047,12 +1047,12 @@ function ClusterIcon(cluster, styles, opt_padding) {
  * @param {google.maps.MouseEvent} event The event to propagate
  */
 ClusterIcon.prototype.triggerClusterClick = function(event) {
-	var markerClusterer = this.cluster_.getMarkerClusterer();
+	var markerClusterer2 = this.cluster_.getMarkerClusterer2();
 
 	// Trigger the clusterclick event.
-	google.maps.event.trigger(markerClusterer, 'clusterclick', this.cluster_, event);
+	google.maps.event.trigger(markerClusterer2, 'clusterclick', this.cluster_, event);
 
-	if (markerClusterer.isZoomOnClick()) {
+	if (markerClusterer2.isZoomOnClick()) {
 		// Zoom into the cluster.
 		this.map_.fitBounds(this.cluster_.getBounds());
 	}
@@ -1267,44 +1267,44 @@ ClusterIcon.prototype.createCss = function(pos) {
 // Export Symbols for Closure
 // If you are not going to compile with closure then you can remove the
 // code below.
-window['MarkerClusterer'] = MarkerClusterer;
-MarkerClusterer.prototype['addMarker'] = MarkerClusterer.prototype.addMarker;
-MarkerClusterer.prototype['addMarkers'] = MarkerClusterer.prototype.addMarkers;
-MarkerClusterer.prototype['clearMarkers'] =
-	MarkerClusterer.prototype.clearMarkers;
-MarkerClusterer.prototype['fitMapToMarkers'] =
-	MarkerClusterer.prototype.fitMapToMarkers;
-MarkerClusterer.prototype['getCalculator'] =
-	MarkerClusterer.prototype.getCalculator;
-MarkerClusterer.prototype['getGridSize'] =
-	MarkerClusterer.prototype.getGridSize;
-MarkerClusterer.prototype['getExtendedBounds'] =
-	MarkerClusterer.prototype.getExtendedBounds;
-MarkerClusterer.prototype['getMap'] = MarkerClusterer.prototype.getMap;
-MarkerClusterer.prototype['getMarkers'] = MarkerClusterer.prototype.getMarkers;
-MarkerClusterer.prototype['getMaxZoom'] = MarkerClusterer.prototype.getMaxZoom;
-MarkerClusterer.prototype['getStyles'] = MarkerClusterer.prototype.getStyles;
-MarkerClusterer.prototype['getTotalClusters'] =
-	MarkerClusterer.prototype.getTotalClusters;
-MarkerClusterer.prototype['getTotalMarkers'] =
-	MarkerClusterer.prototype.getTotalMarkers;
-MarkerClusterer.prototype['redraw'] = MarkerClusterer.prototype.redraw;
-MarkerClusterer.prototype['removeMarker'] =
-	MarkerClusterer.prototype.removeMarker;
-MarkerClusterer.prototype['removeMarkers'] =
-	MarkerClusterer.prototype.removeMarkers;
-MarkerClusterer.prototype['resetViewport'] =
-	MarkerClusterer.prototype.resetViewport;
-MarkerClusterer.prototype['repaint'] =
-	MarkerClusterer.prototype.repaint;
-MarkerClusterer.prototype['setCalculator'] =
-	MarkerClusterer.prototype.setCalculator;
-MarkerClusterer.prototype['setGridSize'] =
-	MarkerClusterer.prototype.setGridSize;
-MarkerClusterer.prototype['setMaxZoom'] =
-	MarkerClusterer.prototype.setMaxZoom;
-MarkerClusterer.prototype['onAdd'] = MarkerClusterer.prototype.onAdd;
-MarkerClusterer.prototype['draw'] = MarkerClusterer.prototype.draw;
+window['MarkerClusterer2'] = MarkerClusterer2;
+MarkerClusterer2.prototype['addMarker'] = MarkerClusterer2.prototype.addMarker;
+MarkerClusterer2.prototype['addMarkers'] = MarkerClusterer2.prototype.addMarkers;
+MarkerClusterer2.prototype['clearMarkers'] =
+	MarkerClusterer2.prototype.clearMarkers;
+MarkerClusterer2.prototype['fitMapToMarkers'] =
+	MarkerClusterer2.prototype.fitMapToMarkers;
+MarkerClusterer2.prototype['getCalculator'] =
+	MarkerClusterer2.prototype.getCalculator;
+MarkerClusterer2.prototype['getGridSize'] =
+	MarkerClusterer2.prototype.getGridSize;
+MarkerClusterer2.prototype['getExtendedBounds'] =
+	MarkerClusterer2.prototype.getExtendedBounds;
+MarkerClusterer2.prototype['getMap'] = MarkerClusterer2.prototype.getMap;
+MarkerClusterer2.prototype['getMarkers'] = MarkerClusterer2.prototype.getMarkers;
+MarkerClusterer2.prototype['getMaxZoom'] = MarkerClusterer2.prototype.getMaxZoom;
+MarkerClusterer2.prototype['getStyles'] = MarkerClusterer2.prototype.getStyles;
+MarkerClusterer2.prototype['getTotalClusters'] =
+	MarkerClusterer2.prototype.getTotalClusters;
+MarkerClusterer2.prototype['getTotalMarkers'] =
+	MarkerClusterer2.prototype.getTotalMarkers;
+MarkerClusterer2.prototype['redraw'] = MarkerClusterer2.prototype.redraw;
+MarkerClusterer2.prototype['removeMarker'] =
+	MarkerClusterer2.prototype.removeMarker;
+MarkerClusterer2.prototype['removeMarkers'] =
+	MarkerClusterer2.prototype.removeMarkers;
+MarkerClusterer2.prototype['resetViewport'] =
+	MarkerClusterer2.prototype.resetViewport;
+MarkerClusterer2.prototype['repaint'] =
+	MarkerClusterer2.prototype.repaint;
+MarkerClusterer2.prototype['setCalculator'] =
+	MarkerClusterer2.prototype.setCalculator;
+MarkerClusterer2.prototype['setGridSize'] =
+	MarkerClusterer2.prototype.setGridSize;
+MarkerClusterer2.prototype['setMaxZoom'] =
+	MarkerClusterer2.prototype.setMaxZoom;
+MarkerClusterer2.prototype['onAdd'] = MarkerClusterer2.prototype.onAdd;
+MarkerClusterer2.prototype['draw'] = MarkerClusterer2.prototype.draw;
 
 Cluster.prototype['getCenter'] = Cluster.prototype.getCenter;
 Cluster.prototype['getSize'] = Cluster.prototype.getSize;

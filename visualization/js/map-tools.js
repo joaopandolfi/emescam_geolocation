@@ -5,18 +5,68 @@ var lng_arg;
 var title_arg;
 
 var markers = [];
-function addMarker (location) {
+
+var markers2 = [];
+function addMarker (location,icon,label) {
 	var marker = new google.maps.Marker({
 		position: location,
 		map: map,
+		title: label,
+		icon: icon,
 		draggable: false
 	});
 
 	markers.push(marker);
 }
 
+function addMarker2 (location,icon,label) {
+	var marker = new google.maps.Marker({
+		position: location,
+		map: map,
+		title: label,
+		icon: icon,
+		draggable: false
+	});
+
+	markers2.push(marker);
+}
+
+
+function clustering2() {
+	var markerCluster2 = new MarkerClusterer2(map, markers2);
+}
+
 function clustering() {
 	var markerCluster = new MarkerClusterer(map, markers);
+}
+
+function putControlPins(pins){
+	pins[0] = pins[1];
+	pins.forEach(function(pin){
+		addMarker({lat:parseFloat(pin[0]),lng:parseFloat(pin[1])},"imgs/m.png",pins.label);
+	});
+}
+
+
+function putExposedPins(pins){
+	pins[0] = pins[1];
+	pins.forEach(function(pin){
+		addMarker2({lat:parseFloat(pin[0]),lng:parseFloat(pin[1])},"imgs/p.png",pins.label);
+	});
+}
+
+
+function makeCircle(location){
+		new google.maps.Circle({
+		strokeColor: '#FF0000',
+		strokeOpacity: 0.8,
+		strokeWeight: 2,
+		fillColor: '#FF0000',
+		fillOpacity: 0.35,
+		map: map,
+		center: location,
+		radius: 5000
+	});
 }
 
 function set_vars(lat, lng, title) {

@@ -1,103 +1,54 @@
 <div id="map"></div>
+<div style="position: fixed; top: 50px; right: 20px" > <input type="button" name="TESTE" value="Clustering" onclick="toggleClustering()"></div>
 
 <style> #map {width: 100%;} </style>
 <script src="js/map-tools.js"></script>
 <script src="js/functions.js"></script>
+<script src="../data/coord_controle-1.csv.json"></script>
+<script src="../data/coord_expostos-1.csv.json"></script>
 <script src="js/MarkerCluster.js"></script>
+<script src="js/MarkerCluster2.js"></script>
 
 <script>
 	// var _exceeded = "You have exceeded your daily request quota for this API. - OVER_QUERY_LIMIT - no results";
 	var _exceeded = "end";
 
+	var isClustering = false;
 	function initMap() {
+		 var myLatLng = {lat: -20.2905587, lng: -40.3099852};
 		map = new google.maps.Map(document.getElementById('map'), {
-			<?php echo "center: {lat: ".$_GET['lat'].", lng: ".$_GET['lng']."},"; ?>
-			<?php echo "zoom: ".$_GET['zoom']; ?>
+		zoom: 4,
+          center: myLatLng
 		});
 
-		var robot_lat;
-		var robot_lng;
+		
+		google.maps.event.addListener(map, "zoom_changed", function(event) {
+			doClustering();
+		});
 
-		google.maps.event.addListener(map, "rightclick", function(event) {
-			robot_lat = event.latLng.lat();
-			robot_lng = event.latLng.lng();
-
-			var pos_str = "lat=" + (robot_lat - 0.075) + "&lng=" + robot_lng;
-			do_post_ajax(null, "/backoff/google_churches", pos_str);
-
-			new google.maps.Circle({
-				strokeColor: '#FF0000',
-				strokeOpacity: 0.8,
-				strokeWeight: 2,
-				fillColor: '#FF0000',
-				fillOpacity: 0.35,
-				map: map,
-				center: {lat: robot_lat - 0.075, lng: robot_lng},
-				radius: 5000
-			});
-
-			pos_str = "lat=" + robot_lat + "&lng=" + robot_lng;
-			do_post_ajax(robot, "/backoff/google_churches", pos_str);
-
-			// setTimeout(function () {
-			// 	location.href = "http://churches.com.br/backoff/robot/" + robot_lat + "/" + robot_lng + "/" + map.getZoom();
-			// }, 5000)
-
-
-
+		
+  		putControlPins(_controlPins);
+		putExposedPins(_expostPins);
 			
-		});
-
-
-		//echo "addMarker({ lat:$lat, lng:$lng });";
-
-		clustering();
-
-		var direction = 0;
-		var step = 1;
-		var current = 0;
-		var max_steps = 1;
-
-		function robot (_result) {
-			if (_result == _exceeded) {
-				alert("AcaboooouuuuuU!!!!!");
-				location.href = "http://churches.com.br/backoff/robot/" + robot_lat + "/" + robot_lng + "/" + map.getZoom();
-				return;
-			}
-
-			do_post_ajax(robot, "/backoff/google_churches", "lat=" + robot_lat + "&lng=" + robot_lng);
-
-			new google.maps.Circle({
-				strokeColor: '#FF0000',
-				strokeOpacity: 0.8,
-				strokeWeight: 2,
-				fillColor: '#FF0000',
-				fillOpacity: 0.35,
-				map: map,
-				center: {lat: robot_lat, lng: robot_lng},
-				radius: 5000
-			});
-
-			switch (direction) {
-				case 0: robot_lng += 0.075; break;
-				case 1: robot_lat -= 0.075; break;
-				case 2: robot_lng -= 0.075; break;
-				case 3: robot_lat += 0.075; break;
-			}
-
-			current++;
-
-			if (current == max_steps) {
-				direction++;
-				current = 0;
-				step++;
-
-				if (step == 2) {step = 0; max_steps++;}
-				if (direction == 4) {direction = 0;}
-			}
-		}
-
         document.getElementById('map').style.height = (window.innerHeight - 47) + "px";
+
+		doClustering();
+	}
+
+	function doClustering(){
+		if(isClustering){
+				clustering();
+				clustering2();
+		}
+	}
+
+	function toggleClustering(){
+		isClustering = !isClustering;
+		initMap();
+		if(isClustering){
+				clustering();
+				clustering2();
+			}
 	}
 
 </script>

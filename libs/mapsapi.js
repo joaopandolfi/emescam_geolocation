@@ -4,7 +4,7 @@
 * joaopandolfi@gmail.com
 */
 
-var apikeys = ["AIzaSyD11OmP2dDvg67_5I_Dw4Jjv8KL4zQz9zc","AIzaSyABVZRiogXuIJUxQl2l4s_cXrZ2sTSlUAI"];
+var apikeys = ["AIzaSyB0bHN7Yfkh3SnQhV3XQZl7wThNH92-F74","AIzaSyD11OmP2dDvg67_5I_Dw4Jjv8KL4zQz9zc","AIzaSyABVZRiogXuIJUxQl2l4s_cXrZ2sTSlUAI"];
 
 function consumeAPI(address,callback,debug){
 	var https = require("https");
@@ -36,7 +36,8 @@ function consumeAPI(address,callback,debug){
 
 			a = JSON.parse(data);
 			if(a.status == "OVER_QUERY_LIMIT"){
-				console.log("QUERY LIMIT PER DAY");
+				result.status = -1;
+				callback(result);
 				return;
 			}
 

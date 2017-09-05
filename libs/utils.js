@@ -1,5 +1,11 @@
 
 
+// sleep time expects milliseconds
+function sleep (time) {
+  return new Promise((resolve) => setTimeout(resolve, time));
+}
+
+
 function normalizeAddress(address,maxLength){
 	address = address.replace(/(nº\s*[0-9])\w+/g,"");
 	address = address.replace("nº", "");
@@ -16,4 +22,4 @@ function normalizeAddress(address,maxLength){
 	return result;
 }
 
-module.exports = {normalizeAddress: normalizeAddress}
+module.exports = {normalizeAddress: normalizeAddress, sleep:sleep}
