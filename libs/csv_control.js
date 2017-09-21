@@ -35,11 +35,13 @@ function readCsv(pathFile, addressCol, callback, callbackEnd, debug){
 	var lines = 0;
 	csv.fromPath(pathFile)
 	 .on("data", function(data){
+	 	result = {address:data[addressCol],others:data};
+
 	 	if(debug)
-	     console.log(data[addressCol]);
+	     console.log(result.address);
 
 	 	lines++;
-	 	callback(data[addressCol]);
+	 	callback(result);
 	 })
 	 .on("end", function(){
 	     console.log("done");

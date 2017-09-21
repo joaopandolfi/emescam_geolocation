@@ -62,7 +62,8 @@ function receiveLocation(data){
 		savePositions(positions);
 }
 
-function consumeAPI(address){
+function consumeAPI(data){
+	address = data.address;
 	address = utils.normalizeAddress(address,addressLenNormalize);
 	console.log(address);
 //	utils.sleep(100).then(() =>{

@@ -24,3 +24,8 @@ http://31.220.54.251:8080/genetic/emescam_geolocation/visualization/
 
 ## Programador
 João Carlos Pandolfi Santana
+
+
+## TODO
+* Colocar os IDs dos pacientes no "hover" do mouse
+* Criar um snippet com os dados do paciente ao clicar no Pin
