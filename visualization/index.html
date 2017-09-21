@@ -4,8 +4,8 @@
 <style> #map {width: 100%;} </style>
 <script src="js/map-tools.js"></script>
 <script src="js/functions.js"></script>
-<script src="../data/coord_controle-1.csv.json"></script>
-<script src="../data/coord_expostos-1.csv.json"></script>
+<script src="../data/coord_controle.csv.json"></script>
+<script src="../data/coord_expostos.csv.json"></script>
 <script src="js/MarkerCluster.js"></script>
 <script src="js/MarkerCluster2.js"></script>
 
@@ -15,6 +15,8 @@
 
 	var isClustering = false;
 	function initMap() {
+		initialize();
+		
 		 var myLatLng = {lat: -20.2905587, lng: -40.3099852};
 		map = new google.maps.Map(document.getElementById('map'), {
 		zoom: 4,

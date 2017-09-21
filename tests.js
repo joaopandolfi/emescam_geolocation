@@ -7,10 +7,10 @@ a = [{status:1,value:2},{status:1,value:2}];
 //csv.readFullCsv(pathFile,function(data){  console.log(data); csv.saveFile(pathFile+".json",JSON.stringify(data))});
 
 
-pathFile = "./data/coord_controle-1.csv";
+pathFile = "./data/coord_controle.csv";
 csv.csvToJsonWithPrefix(pathFile,"var _controlPins = ","Controle");
 
-pathFile = "./data/coord_expostos-1.csv";
+pathFile = "./data/coord_expostos.csv";
 csv.csvToJsonWithPrefix(pathFile,"var _expostPins = ","Expostos");
 
 

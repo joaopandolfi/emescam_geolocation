@@ -7,6 +7,12 @@ var title_arg;
 var markers = [];
 
 var markers2 = [];
+
+function initialize(){
+	markers = [];
+	markers2 = [];
+}
+
 function addMarker (location,icon,label) {
 	var marker = new google.maps.Marker({
 		position: location,
@@ -43,7 +49,7 @@ function clustering() {
 function putControlPins(pins){
 	pins[0] = pins[1];
 	pins.forEach(function(pin){
-		addMarker({lat:parseFloat(pin[0]),lng:parseFloat(pin[1])},"imgs/m.png",pins.label);
+		addMarker({lat:parseFloat(pin[0]),lng:parseFloat(pin[1])},"imgs/m.png","Controle");
 	});
 }
 
@@ -51,7 +57,7 @@ function putControlPins(pins){
 function putExposedPins(pins){
 	pins[0] = pins[1];
 	pins.forEach(function(pin){
-		addMarker2({lat:parseFloat(pin[0]),lng:parseFloat(pin[1])},"imgs/p.png",pins.label);
+		addMarker2({lat:parseFloat(pin[0]),lng:parseFloat(pin[1])},"imgs/p.png","Exposto");
 	});
 }
 
