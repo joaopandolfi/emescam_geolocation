@@ -10,7 +10,7 @@ function csvToJson(pathFile){
 function csvToJsonWithPrefix(pathFile,prefix,label){
 	readFullCsv(pathFile,function(data){  
 		data.label = label;
-		console.log(data); 
+		//console.log(data); 
 		saveFile(pathFile+".json",prefix+JSON.stringify(data));
 	});
 }
@@ -37,6 +37,9 @@ function readCsv(pathFile, addressCol, callback, callbackEnd, debug){
 	 .on("data", function(data){
 	 	result = {address:data[addressCol],others:data};
 
+	 	if(result.address == "" )
+	 		return;
+	 	
 	 	if(debug)
 	     console.log(result.address);
 

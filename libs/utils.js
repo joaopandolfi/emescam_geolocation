@@ -7,6 +7,9 @@ function sleep (time) {
 
 
 function normalizeAddress(address,maxLength){
+	maxLength = 10;
+	if(address == undefined)
+		return "";
 	address = address.replace(/(nº\s*[0-9])\w+/g,"");
 	address = address.replace("nº", "");
 	splitted = address.split(",");

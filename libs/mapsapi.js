@@ -10,7 +10,7 @@ function consumeAPI(address,callback,debug){
 	var https = require("https");
 
 	var baseUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address={address}&key={api_key}'
- 	var apiKey = apikeys[0];
+ 	var apiKey = apikeys[2];
 	var data = "";
 	var result = {location:{lat:0,lng:0},data:{},status:0, address: address}
 
@@ -18,7 +18,11 @@ function consumeAPI(address,callback,debug){
 	baseUrl = baseUrl.replace("{api_key}", apiKey);
 	baseUrl = encodeURI(baseUrl);
 
+	if(address == "," || address == " " || address == "" || address == "--VAZIO--,")
+		return;
 
+
+	
 	https.get(baseUrl, function(res) {
   		if(debug)
   			console.log("Got response: " + res.statusCode);

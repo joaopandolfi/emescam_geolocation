@@ -57,7 +57,7 @@ function receiveLocation(data){
 			console.log("===============");
 	}
 
-	count++;
+	count += 1;
 	if(count == lines && endOfFile)
 		savePositions(positions);
 }
@@ -65,7 +65,7 @@ function receiveLocation(data){
 function consumeAPI(data){
 	address = data.address;
 	address = utils.normalizeAddress(address,addressLenNormalize);
-	console.log(address);
+	//console.log(address);
 //	utils.sleep(100).then(() =>{
 		maps.consumeAPI(address, receiveLocation, false);
 //	});
@@ -75,6 +75,7 @@ function consumeAPI(data){
 
 function readedAllFile(lenFile){
 	console.log("Linhas no arquivo "+ lenFile);
+	//lines = lenFile;
 	endOfFile = true;
 }
 
